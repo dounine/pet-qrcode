@@ -4,9 +4,10 @@ const path = require('path')
 const del = require('del')
 const replace = require('gulp-replace')
 const {fetch, refresh, upload} = require('qiniu-tool-v2')
+const qiniuData = require('./.qiniu.json')
 
-const key = ""
-const token = ""
+const key = qiniuData.key
+const token = qiniuData.token
 const pathPre = "pet-qrcode"
 
 
