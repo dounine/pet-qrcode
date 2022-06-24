@@ -3,7 +3,15 @@ import Home from "../views/Home.vue";
 
 const routes: RouteRecordRaw[] = [
     {
-        path: '/pet/:type',
+        path: '',
+        name: 'default',
+        component: Home,
+        meta: {
+            type: "cat"
+        }
+    },
+    {
+        path: '/:type?',
         name: 'Home',
         component: Home
     }

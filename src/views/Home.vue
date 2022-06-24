@@ -15,7 +15,7 @@
         </el-aside>
         <el-main>
           <div class="myfont">长按识别二维码</div>
-          <div class="myfont" style="margin-top:6px;">即可加入喵喵群一起铲屎</div>
+          <div class="myfont" style="margin-top:6px;">即可加入{{ title }}群一起铲屎</div>
         </el-main>
       </el-container>
       <el-divider style="margin:0;"></el-divider>
@@ -38,6 +38,8 @@ import {
 
 const qrcode = ref("");
 const {proxy} = getCurrentInstance()
+let type = proxy.$route.params["type"] || "cat"
+const title = ref(type === 'cat' ? '喵喵' : '狗狗')
 const convertImgToBase64 = ({url, callback}) => {
   let canvas = document.createElement('CANVAS'),
       ctx = canvas.getContext('2d'),
@@ -55,14 +57,13 @@ const convertImgToBase64 = ({url, callback}) => {
 }
 
 onBeforeMount(() => {
-  let type = proxy.$route.params["type"] || "cat"
   let qrcodeData = localStorage.getItem(`${type}_qrcode`);
   if (qrcodeData) {
     qrcode.value = qrcodeData;
     document.getElementById("loading").style = "display:none";
   } else {
     convertImgToBase64({
-      url: `http://douyin.61week.com/pet/${type}.png`, callback: (base64Img) => {
+      url: `http://douyin.61week.com/pet-qrcode/${type}.png`, callback: (base64Img) => {
         qrcode.value = base64Img;
         document.getElementById("loading").style = "display:none";
         localStorage.setItem(`${type}_qrcode`, base64Img);

@@ -72,7 +72,7 @@ gulp.task('uploadStaticResource', async cb => {
         }, info.fullPath, `${pathPre}/static/${info.fullPath.substring("src/assets/static/".length)}`)
     }));
 })
-gulp.task('uploadPet', async cb => {
+gulp.task('uploadCat', async cb => {
     await upload({
         ak: key,
         sk: token,
@@ -83,6 +83,17 @@ gulp.task('uploadPet', async cb => {
         resolve();
     })
 });
+gulp.task('uploadDog', async cb => {
+    await upload({
+        ak: key,
+        sk: token,
+        scope: 'douyinpay',
+        zone: 'qiniu.zone.Zone_z2', // 七牛空间（默认Zone_z1）
+    }, 'src/assets/dog.html', `pet/dog.html`)
+    return new Promise(function (resolve, reject) {
+        resolve();
+    })
+});
 // 上传
-gulp.task('upload', gulp.series(['replacePath', 'uploadStaticResource', 'uploadResource', 'uploadPet']));
+gulp.task('upload', gulp.series(['replacePath', 'uploadStaticResource', 'uploadResource', 'uploadCat', 'uploadDog']));
 
