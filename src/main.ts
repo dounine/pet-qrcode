@@ -1,7 +1,7 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import ElementPlus from 'element-plus'
+import EP from 'element-plus'
 import 'element-plus/dist/index.css'
 import axios from 'axios';
 import MyAxios from './myaxios.d';
@@ -13,5 +13,11 @@ const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
 }
-app.use(router).use(VueAxios, axios).use(ElementPlus).mount('#app')
+app.use(router).use(VueAxios, axios)
+try {
+    app.use(EP)
+} catch (e) {
+    app.use(ElementPlus)
+}
+app.mount('#app')
 app.config.globalProperties.$axios = MyAxios;

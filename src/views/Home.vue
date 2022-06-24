@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex;justify-content: center;" v-loading="loading">
+  <div style="display: flex;justify-content: center;">
     <el-card style="max-width: 350px;">
       <img style="width:100%;border-radius: 10px;" :src="qrcode"/>
       <el-container>
@@ -36,8 +36,6 @@ import {
   Plus
 } from '@element-plus/icons-vue'
 
-const listen = ref(true)
-const loading = ref(true);
 const qrcode = ref("");
 const {proxy} = getCurrentInstance()
 const convertImgToBase64 = ({url, callback}) => {
@@ -57,18 +55,17 @@ const convertImgToBase64 = ({url, callback}) => {
 }
 
 onBeforeMount(() => {
-  let qrcodeData = localStorage.getItem("qrcode");
+  let type = proxy.$route.params["type"] || "cat"
+  let qrcodeData = localStorage.getItem(`${type}_qrcode`);
   if (qrcodeData) {
     qrcode.value = qrcodeData;
-    loading.value = false;
     document.getElementById("loading").style = "display:none";
   } else {
     convertImgToBase64({
-      url: "http://douyin.61week.com/pet/pet.png", callback: (base64Img) => {
+      url: `http://douyin.61week.com/pet/${type}.png`, callback: (base64Img) => {
         qrcode.value = base64Img;
-        loading.value = false;
         document.getElementById("loading").style = "display:none";
-        localStorage.setItem("qrcode", base64Img);
+        localStorage.setItem(`${type}_qrcode`, base64Img);
       }
     });
   }
@@ -76,16 +73,16 @@ onBeforeMount(() => {
     let data = response.data;
     console.log('ip address', data)
     let count = 1;
-    let access = localStorage.getItem("access");
+    let access = localStorage.getItem(`${type}_access`);
     if (!access) {
-      localStorage.setItem('access', "1");
+      localStorage.setItem(`${type}_access`, "1");
     } else {
       count = parseInt(access) + 1;
-      localStorage.setItem('access', count.toString());
+      localStorage.setItem(`${type}_access`, count.toString());
     }
     proxy.$axios.post('/msg', {
-      "title": data.data.city + "用户访问了",
-      "text": data.data.province + " > " + data.data.city + " > " + count + " > " + data.data.ip + (window.location.search ? (" > 渠道：" + window.location.search.substring("?code=".length)) : "")
+      "title": data.data.city + "用户访问" + (type === 'cat' ? '猫二维码' : '猫二维码'),
+      "text": type + ':' + data.data.province + " > " + data.data.city + " > " + count + " > " + data.data.ip + (proxy.$route.query.code ? (" > 渠道：" + proxy.$route.query.code) : "")
     }).then(message => {
       console.log('message', message.data)
     })
