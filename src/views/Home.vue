@@ -14,14 +14,14 @@
           </div>
         </el-aside>
         <el-main>
-          <div class="myfont">长按识别二维码</div>
-          <div class="myfont" style="margin-top:6px;">即可加入{{ title }}群一起铲屎</div>
+          <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">长按识别二维码</div>
+          <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">即可加入{{ title }}群一起铲屎</div>
         </el-main>
       </el-container>
       <el-divider style="margin:0;"></el-divider>
       <el-container>
         <el-main>
-            <span style="color:#969799;">
+            <span style="color:#969799;font-size: 16px;">
               如果无法扫码进群、可添加群主：wx-43210 为好友邀请进群
             </span>
         </el-main>
@@ -82,7 +82,7 @@ onBeforeMount(() => {
       localStorage.setItem(`${type}_access`, count.toString());
     }
     proxy.$axios.post('/msg', {
-      "title": data.data.city + "用户访问" + (type === 'cat' ? '猫二维码' : '猫二维码'),
+      "title": data.data.city + "用户访问" + (type === 'cat' ? '猫二维码' : '狗二维码'),
       "text": type + ':' + data.data.province + " > " + data.data.city + " > " + count + " > " + data.data.ip + (proxy.$route.query.code ? (" > 渠道：" + proxy.$route.query.code) : "")
     }).then(message => {
       console.log('message', message.data)

@@ -65,6 +65,7 @@ export default defineConfig({
         })],
     server: {
         port: 8080,
+        host: true
         // proxy: localEnabled ? {} : {
         //     '/api': {
         //         target: 'https://127.0.0.1:40000',   //实际请求地址
