@@ -9,6 +9,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 .qiniu.json
+report*
 
 node_modules
 dist
