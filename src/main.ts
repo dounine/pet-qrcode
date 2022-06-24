@@ -13,10 +13,10 @@ const app = createApp(App)
 //     app.component(key, component)
 // }
 app.use(router).use(VueAxios, axios)
-try {
-    app.use(EP)
-} catch (e) {
+if (import.meta.env.VITE_ENV === 'pro') {
     app.use(ElementPlus)
+} else {
+    app.use(EP)
 }
 app.mount('#app')
 app.config.globalProperties.$axios = MyAxios;
