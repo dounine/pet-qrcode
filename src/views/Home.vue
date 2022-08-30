@@ -14,10 +14,14 @@
           </div>
         </el-aside>
         <el-main>
-          <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">{{title}}群已超200人只能邀请加入</div>
-          <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">长按识别添加、让群主邀请加入</div>
-<!--          <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">长按识别二维码</div>-->
-<!--          <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">即可加入{{ title }}群一起铲屎</div>-->
+          <div v-if="isCat">
+            <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">{{title}}群已超200人只能邀请加入</div>
+            <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">长按识别添加、让群主邀请加入</div>
+          </div>
+          <div v-else>
+            <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">长按识别二维码</div>
+            <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">即可加入{{ title }}群一起铲屎</div>
+          </div>
         </el-main>
       </el-container>
       <el-divider style="margin:0;"></el-divider>
@@ -42,6 +46,7 @@ const qrcode = ref("");
 const {proxy} = getCurrentInstance()
 let type = proxy.$route.params["type"] || "cat"
 const title = ref(type === 'cat' ? '喵喵' : '狗狗')
+const isCat = ref(type === 'cat');
 const convertImgToBase64 = ({url, callback}) => {
   let canvas = document.createElement('CANVAS'),
       ctx = canvas.getContext('2d'),
