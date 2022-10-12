@@ -37,22 +37,22 @@ export default defineConfig({
                 {
                     name: 'axios',
                     var: 'axios',
-                    path: 'https://douyin.61week.com/pet-qrcode/static/js/axios-0.21.4.js'//可自己找其它cdn地址
+                    path: 'https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-y/axios/0.26.0/axios.min.js'//可自己找其它cdn地址
                 },
                 {
                     name: 'vue',
                     var: 'Vue',
-                    path: 'https://douyin.61week.com/pet-qrcode/static/js/vue-3.2.36.js'//可自己找其它cdn地址
+                    path: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/vue/3.2.31/vue.global.prod.min.js'//可自己找其它cdn地址
                 },
                 {
                     name: 'vue-router',
                     var: 'VueRouter',
-                    path: 'https://douyin.61week.com/pet-qrcode/static/js/vue-router-4.0.13.js'//可自己找其它cdn地址
+                    path: 'https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/vue-router/4.0.13/vue-router.global.prod.min.js'//可自己找其它cdn地址
                 },
                 {
                     name: 'element-plus',
                     var: 'element',
-                    path: 'https://douyin.61week.com/pet-qrcode/static/js/element-plus-2.2.6.js'//可自己找其它cdn地址
+                    path: 'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/element-plus/2.0.4/index.full.min.js'//可自己找其它cdn地址
                 },
             ],
         }),
