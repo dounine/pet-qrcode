@@ -51,7 +51,7 @@ export default defineConfig({
                 },
                 {
                     name: 'element-plus',
-                    var: 'element',
+                    var: 'ElementPlus',
                     path: 'https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/element-plus/2.0.4/index.full.min.js'//可自己找其它cdn地址
                 },
             ],

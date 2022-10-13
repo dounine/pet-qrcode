@@ -1,7 +1,8 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import EP from 'element-plus'
+import ElementPlus from 'element-plus'
+// import EP from 'element-plus'
 // import 'element-plus/dist/index.css'
 import axios from 'axios';
 import MyAxios from './myaxios.d';
@@ -13,10 +14,10 @@ const app = createApp(App)
 //     app.component(key, component)
 // }
 app.use(router).use(VueAxios, axios)
-if (import.meta.env.VITE_ENV === 'pro') {
-    app.use(ElementPlus)
-} else {
-    app.use(EP)
-}
-app.mount('#app')
+// if (import.meta.env.VITE_ENV === 'pro') {
+//     app.use(ElementPlus)
+// } else {
+//     app.use(EP)
+// }
+app.use(ElementPlus).mount('#app')
 app.config.globalProperties.$axios = MyAxios;
