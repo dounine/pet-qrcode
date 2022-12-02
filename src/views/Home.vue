@@ -70,7 +70,7 @@ onBeforeMount(() => {
     document.getElementById("loading").style = "display:none";
   } else {
     convertImgToBase64({
-      url: `http://douyin.61week.com/pet-qrcode/${type}.png`, callback: (base64Img) => {
+      url: `https://pet-lake.skysriver.com/pet-qrcode/${type}.png`, callback: (base64Img) => {
         qrcode.value = base64Img;
         document.getElementById("loading").style = "display:none";
         localStorage.setItem(`${type}_qrcode`, base64Img);
