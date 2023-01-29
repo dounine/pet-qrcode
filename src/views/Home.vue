@@ -15,8 +15,8 @@
         </el-aside>
         <el-main>
           <div v-if="isCat">
-            <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">{{title}}群已超200人只能邀请加入</div>
-            <div style="color: #323233;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">长按识别添加、让群主邀请加入</div>
+            <div style="color: #888888;font-size: 16px;font-family:'微软雅黑';">{{title}}群已超<strong style="color:black;margin:0 2px;">451</strong>人只能邀请加入</div>
+            <div style="color: #888888;margin-top:6px;font-size: 16px;font-family:'微软雅黑';">长按识别添加、让群主邀请加入</div>
           </div>
           <div v-else>
             <div style="color: #323233;font-size: 16px;font-family:'微软雅黑';">长按识别二维码</div>
@@ -28,7 +28,7 @@
       <el-container>
         <el-main>
             <span style="color:#969799;font-size: 16px;">
-              如果无法扫码进群、可添加群主：wx-43210 为好友邀请进群
+              如果无法长按扫码添加、可手动添加群主号：wx-43210 为好友再邀请进群。
             </span>
         </el-main>
       </el-container>
@@ -45,7 +45,7 @@ import {
 const qrcode = ref("");
 const {proxy} = getCurrentInstance()
 let type = proxy.$route.params["type"] || "cat"
-const title = ref(type === 'cat' ? '喵喵' : '狗狗')
+const title = ref(type === 'cat' ? '猫猫' : '狗')
 const isCat = ref(type === 'cat');
 const convertImgToBase64 = ({url, callback}) => {
   let canvas = document.createElement('CANVAS'),
