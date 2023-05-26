@@ -28,7 +28,7 @@
       <el-container>
         <el-main>
             <span style="color:#969799;font-size: 16px;">
-              如果无法长按扫码添加、可手动添加群主号：wx-43210 为好友再邀请进群。
+              如果无法长按扫码添加、可手动添加群主号：mmi-6688 为好友再邀请进群。
             </span>
         </el-main>
       </el-container>
@@ -70,7 +70,7 @@ onBeforeMount(() => {
     document.getElementById("loading").style = "display:none";
   } else {
     convertImgToBase64({
-      url: `https://pet-lake.skysriver.com/pet-qrcode/${type}.png`, callback: (base64Img) => {
+      url: `https://pet-lake.skysriver.com/pet-qrcode/${type}.jpeg`, callback: (base64Img) => {
         qrcode.value = base64Img;
         document.getElementById("loading").style = "display:none";
         localStorage.setItem(`${type}_qrcode`, base64Img);
@@ -88,12 +88,12 @@ onBeforeMount(() => {
       count = parseInt(access) + 1;
       localStorage.setItem(`${type}_access`, count.toString());
     }
-    proxy.$axios.post('/msg', {
-      "title": data.data.city + "用户访问" + (type === 'cat' ? '猫二维码' : '狗二维码'),
-      "text": type + ':' + data.data.province + " > " + data.data.city + " > " + count + " > " + data.data.ip + (proxy.$route.query.code ? (" > 渠道：" + proxy.$route.query.code) : "")
-    }).then(message => {
-      console.log('message', message.data)
-    })
+    // proxy.$axios.post('/msg', {
+    //   "title": data.data.city + "用户访问" + (type === 'cat' ? '猫二维码' : '狗二维码'),
+    //   "text": type + ':' + data.data.province + " > " + data.data.city + " > " + count + " > " + data.data.ip + (proxy.$route.query.code ? (" > 渠道：" + proxy.$route.query.code) : "")
+    // }).then(message => {
+    //   console.log('message', message.data)
+    // })
   })
 })
 </script>
